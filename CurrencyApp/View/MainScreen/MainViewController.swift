@@ -26,7 +26,7 @@ class MainViewController: UIViewController {
     }()
     
     private lazy var dropDownView: DropDownView<CurrencyViewCell> = {
-        let width = view.bounds.size.width / 2
+        let width = view.bounds.size.width / 3
         let height = 2 * view.bounds.size.height / 3
         
         var x = changeCurrencyButton.frame.minX - width - 5
@@ -168,6 +168,16 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         cell.bind(number: indexPath.row + 1, coin: coin)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        let coin = coinsMarket[indexPath.row]
+        
+        navigationController?.pushViewController(
+            CoinDetailVC.getController(coinMarket: coin, currency: mainViewModel.currentCurrency),
+            animated: true
+        )
     }
 }
 

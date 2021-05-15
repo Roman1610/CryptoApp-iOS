@@ -7,7 +7,7 @@ protocol DataFetcherProtocol: AnyObject {
     func fetchAllCoins(completion: @escaping ([ResponseCoin]) -> ())
     func fetchCoinMarkets(page: Int, currency: String, order: GeckoSortResultEnum?, perPage: Int, completion: @escaping ([ResponseCoinMarket]) -> ())
     func fetchCoinMarketChart(id: String, currency: String, days: Int, completion: @escaping (ResponseCoinMarketChartData) -> ())
-    func fetchCoinMarketChartRange(id: String, currency: String, from: Int64, to: Int64, completion: @escaping (ResponseCoinMarketChartData) -> ())
+    func fetchCoinMarketChartRange(id: String, currency: String, from: Int, to: Int, completion: @escaping (ResponseCoinMarketChartData) -> ())
 }
 
 
@@ -27,7 +27,7 @@ class DataFetcher: DataFetcherProtocol {
         /// Get historical market data include price, market cap, and 24h volume (granularity auto)
         case getCoinMarketChart(id: String, currency: String, days: Int)
         /// Get historical market data include price, market cap, and 24h volume within a range of timestamp (granularity auto)
-        case getCoinMarketChartRange(id: String, currency: String, from: Int64, to: Int64)
+        case getCoinMarketChartRange(id: String, currency: String, from: Int, to: Int)
         
         
         var path: String {
@@ -86,7 +86,7 @@ class DataFetcher: DataFetcherProtocol {
         }
     }
     
-    func fetchCoinMarketChartRange(id: String, currency: String, from: Int64, to: Int64, completion: @escaping (ResponseCoinMarketChartData) -> ()) {
+    func fetchCoinMarketChartRange(id: String, currency: String, from: Int, to: Int, completion: @escaping (ResponseCoinMarketChartData) -> ()) {
         chartDataRequest?.cancel()
         chartDataRequest = request(.getCoinMarketChartRange(id: id, currency: currency, from: from, to: to)) { responseString in
             completion(ResponseCoinMarketChartData(from: responseString, type: "prices"))

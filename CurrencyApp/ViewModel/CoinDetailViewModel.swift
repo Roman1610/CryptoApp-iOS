@@ -31,8 +31,8 @@ class CoinDetailViewModel: ObservableObject {
     
     func loadChart() {
         isLoading = true
-        let currentTimestamp = Int64(Date().timeIntervalSince1970) * 1000
-        let beforeTimestamp = Int64(currentTimestamp - period.rawValue)
+        let currentTimestamp = Int(Date().timeIntervalSince1970) * 1000
+        let beforeTimestamp = currentTimestamp - period.rawValue
         
         repository.fetchCoinChartRange(id: coinId, currency: currency, from: beforeTimestamp / 1000, to: currentTimestamp / 1000) { data in
             DispatchQueue.global(qos: .background).async {

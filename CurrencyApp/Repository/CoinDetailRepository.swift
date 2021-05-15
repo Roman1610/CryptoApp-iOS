@@ -5,7 +5,7 @@ protocol CoinDetailRepositoryProtocol {
     init(fetcher: DataFetcherProtocol)
     
     func fetchCoinChart(id: String, currency: String, days: Int, result: @escaping ([ResponseCoinMarketChartNode]) -> ())
-    func fetchCoinChartRange(id: String, currency: String, from: Int64, to: Int64, result: @escaping ([ResponseCoinMarketChartNode]) -> ())
+    func fetchCoinChartRange(id: String, currency: String, from: Int, to: Int, result: @escaping ([ResponseCoinMarketChartNode]) -> ())
 }
 
 class CoinDetailRepository: CoinDetailRepositoryProtocol {
@@ -22,7 +22,7 @@ class CoinDetailRepository: CoinDetailRepositoryProtocol {
         }
     }
     
-    func fetchCoinChartRange(id: String, currency: String, from: Int64, to: Int64, result: @escaping ([ResponseCoinMarketChartNode]) -> ()) {
+    func fetchCoinChartRange(id: String, currency: String, from: Int, to: Int, result: @escaping ([ResponseCoinMarketChartNode]) -> ()) {
         fetcher.fetchCoinMarketChartRange(id: id, currency: currency, from: from, to: to) { responseData in
             result(responseData.prices)
         }

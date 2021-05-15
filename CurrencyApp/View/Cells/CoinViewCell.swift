@@ -25,6 +25,7 @@ class CoinViewCell: UITableViewCell {
         
         let percent = ((coin.priceChangePercentage24h ?? 0) * 10).rounded() / 10
         percentLabel.text = "\(percent)%"
+        percentLabel.textColor = percent < 0 ? UIColor.systemRed : UIColor.systemGreen
         
         capitalLabel.text = "\(coin.marketCap.rounded())"
         
