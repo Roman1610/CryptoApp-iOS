@@ -94,16 +94,16 @@ class DataFetcher: DataFetcherProtocol {
     }
     
     private func request(_ route: Route, success: @escaping (String) -> (), failure: ((String) -> ())? = nil) -> DataRequest {
-        debugPrint("DataFetcher:", route.path)
+        debugPrint("DataFetcher: \(route.path)")
         
         return AF.request(route.path).responseString { response in
             switch response.result {
             case .success(let value):
-                debugPrint("DataFetcher: success -", value)
+                debugPrint("DataFetcher: success - \(value)")
                 success(value)
                 break
             case .failure(let error):
-                debugPrint("DataFetcher: failure -", error.localizedDescription)
+                debugPrint("DataFetcher: failure - \(error.localizedDescription)")
                 failure?(error.localizedDescription)
                 break
             }

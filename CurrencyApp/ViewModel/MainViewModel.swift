@@ -6,16 +6,17 @@ class MainViewModel: ObservableObject {
     @Published private(set) var coins = [Coin]()
     @Published private(set) var coinMarkets = [CoinMarket]()
     
+    @Published private(set) var isInitialLoading = false
     @Published private(set) var isLoadingPage = false
     @Published private(set) var isCurrenciesLoading = false
     
     @Published var currentCurrency = "usd" {
         didSet {
-            updateData()
+            refreshCoinMarkets()
         }
     }
     
-    private var currentLoadedPages = 1
+    private var currentLoadedPages = 0
     private let repository: MainRepositoryProtocol
     
     required init(fetcher: DataFetcherProtocol) {
@@ -27,28 +28,43 @@ class MainViewModel: ObservableObject {
         loadSupportedCurrencies()
     }
     
-    func loadAllCoins() {
-        isLoadingPage = true
-        repository.fetchAllData { [weak self] coinsData in
-            DispatchQueue.main.async {
-                self?.coins = coinsData
-            }
-        }
+    func refreshCoinMarkets() {
+        currentLoadedPages = 0
+        coinMarkets.removeAll()
+        loadCoinMarkets()
     }
     
+    func loadMore() {
+        loadCoinMarkets()
+    }
+    
+//    func loadAllCoins() {
+//        isLoadingPage = true
+//        repository.fetchAllData { [weak self] coinsData in
+//            DispatchQueue.main.async {
+//                self?.coins = coinsData
+//            }
+//        }
+//    }
+    
     private func loadCoinMarkets() {
-        guard !isLoadingPage else {
+        guard !isLoadingPage && !isInitialLoading else {
             return
         }
 
-        isLoadingPage = true
+        if currentLoadedPages == 0 {
+            isInitialLoading = true
+        } else {
+            isLoadingPage = true
+        }
         
-        repository.fetchCoinMarkets(page: currentLoadedPages, currency: currentCurrency) { [weak self] coinMarketsData in
+        repository.fetchCoinMarkets(page: currentLoadedPages + 1, currency: currentCurrency) { [weak self] coinMarketsData in
             DispatchQueue.main.async {
                 self?.coinMarkets += coinMarketsData
             }
             self?.currentLoadedPages += 1
             self?.isLoadingPage = false
+            self?.isInitialLoading = false
         }
     }
     
@@ -61,11 +77,5 @@ class MainViewModel: ObservableObject {
             }
             self?.isCurrenciesLoading = false
         }
-    }
-    
-    private func updateData() {
-        currentLoadedPages = 0
-        coinMarkets.removeAll()
-        loadCoinMarkets()
     }
 }

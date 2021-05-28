@@ -1,38 +1,24 @@
 import Foundation
 
 
-protocol MainRepositoryProtocol {
+protocol SearchRepositoryProtocol {
     init(fetcher: DataFetcherProtocol)
     
-    func fetchSupportedCurrencies(result: @escaping ([Currency]) -> ())
-    func fetchAllData(result: @escaping ([Coin]) -> ())
     func fetchCoinMarkets(page: Int, currency: String, order: GeckoSortResultEnum?, perPage: Int, result: @escaping ([CoinMarket]) -> ())
 }
 
-extension MainRepositoryProtocol {
+extension SearchRepositoryProtocol {
     func fetchCoinMarkets(page: Int, currency: String, result: @escaping ([CoinMarket]) -> ()) {
         fetchCoinMarkets(page: page, currency: currency, order: nil, perPage: 50, result: result)
     }
 }
 
-class MainRepository: MainRepositoryProtocol {
+class SearchRepository: SearchRepositoryProtocol {
     
     private let fetcher: DataFetcherProtocol
     
     required init(fetcher: DataFetcherProtocol) {
         self.fetcher = fetcher
-    }
-    
-    func fetchSupportedCurrencies(result: @escaping ([Currency]) -> ()) {
-        fetcher.fetchSupportedCurrencies { currenciesData in
-            result(currenciesData.map(Currency.init))
-        }
-    }
-    
-    func fetchAllData(result: @escaping ([Coin]) -> ()) {
-        fetcher.fetchAllCoins { coinsData in
-            result(coinsData.map(Coin.init))
-        }
     }
     
     func fetchCoinMarkets(

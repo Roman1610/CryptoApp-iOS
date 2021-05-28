@@ -6,8 +6,7 @@ class MainViewController: UIViewController {
     
     // MARK: - Constants
     
-    private let tableCellHeight: CGFloat = 50
-    private let tableHeaderViewHeight: CGFloat = 50
+    private let tableCellHeight: CGFloat = 60
     
     // MARK: - IBOutlets
     
@@ -15,6 +14,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Views
+    
+    private let refreshControl = UIRefreshControl()
     
     private lazy var loadingIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(frame: .infinite)
@@ -46,6 +47,7 @@ class MainViewController: UIViewController {
     }()
     
     // MARK: - Properties
+    
     private var mainViewModel: MainViewModel!
     private var viewModelCancellables: [AnyCancellable] = []
     private var coinsMarket: [CoinMarket] = []
@@ -80,19 +82,22 @@ class MainViewController: UIViewController {
         isDropDownOpen = !isDropDownOpen
     }
     
+    @IBAction func didSearchClicked(_ sender: UIButton) {
+        navigationController?.pushViewController(SearchViewController.instantiate(), animated: true)
+    }
     
     // MARK: - Private Methods
     
     private func configTableView() {
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshCoins(_:)), for: .valueChanged)
+//        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Coins Data...")
+        
         tableView.register(
             CoinViewCell.nib,
             forCellReuseIdentifier: CoinViewCell.identifier
         )
-        tableView.register(
-            CoinsHeaderView.nib,
-            forHeaderFooterViewReuseIdentifier: CoinsHeaderView.identifier
-        )
-        tableView.tableFooterView = loadingIndicator
+        
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -100,7 +105,7 @@ class MainViewController: UIViewController {
     private func initViewModel() {
         mainViewModel = MainViewModel(fetcher: DataFetcher())
         
-        let loadingCancellable = mainViewModel.$isLoadingPage.sink {
+        let loadingPageCancellable = mainViewModel.$isLoadingPage.sink {
             [weak self] isLoading in
             
             if isLoading {
@@ -109,6 +114,16 @@ class MainViewController: UIViewController {
             } else {
                 self?.loadingIndicator.stopAnimating()
                 self?.tableView?.tableFooterView = nil
+            }
+        }
+        
+        let loadingInitCancellable = mainViewModel.$isInitialLoading.sink {
+            [weak self] isLoading in
+            
+            if isLoading {
+                self?.refreshControl.beginRefreshing()
+            } else {
+                self?.refreshControl.endRefreshing()
             }
         }
         
@@ -123,32 +138,22 @@ class MainViewController: UIViewController {
             self?.dropDownView.setItems(currencies)
         }
         
-        viewModelCancellables.append(loadingCancellable)
+        viewModelCancellables.append(loadingPageCancellable)
+        viewModelCancellables.append(loadingInitCancellable)
         viewModelCancellables.append(coinsMarketCancellable)
         viewModelCancellables.append(currenciesCancellable)
         
+        refreshControl.beginRefreshing()
+        mainViewModel.loadData()
+    }
+    
+    @objc private func refreshCoins(_ sender: Any) {
         mainViewModel.loadData()
     }
     
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return tableHeaderViewHeight
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = tableView.dequeueReusableHeaderFooterView(
-            withIdentifier: CoinsHeaderView.identifier
-        ) as! CoinsHeaderView
-        
-        return view
-    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableCellHeight
@@ -165,7 +170,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         ) as! CoinViewCell
         
         let coin = coinsMarket[indexPath.row]
-        cell.bind(number: indexPath.row + 1, coin: coin)
+        cell.bind(coin: coin)
         
         return cell
     }
@@ -178,6 +183,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             CoinDetailVC.getController(coinMarket: coin, currency: mainViewModel.currentCurrency),
             animated: true
         )
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row >= tableView.numberOfRows(inSection: 0) - 2 {
+            mainViewModel.loadMore()
+        }
     }
 }
 
