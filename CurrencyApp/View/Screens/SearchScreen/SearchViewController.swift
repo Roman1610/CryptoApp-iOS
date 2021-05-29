@@ -5,20 +5,37 @@ class SearchViewController: UIViewController, UINibInitProtocol {
     
     // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     // MARK: - Properties
     
-    private var viewModel: SearchViewModel!
+    weak var coordinator: MainCoordinatorProtocol!
+    
+    private var searchViewModel: SearchViewModel!
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configSearchBar()
         configTableView()
-        initViewModel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        searchBar.searchTextField.becomeFirstResponder()
     }
 
     // MARK: - Methods
+    
+    func setViewModel(_ viewModel: SearchViewModel) {
+        searchViewModel = viewModel
+        initViewModel()
+    }
+    
+    private func configSearchBar() {
+        searchBar.delegate = self
+    }
     
     private func configTableView() {
         tableView.delegate = self
@@ -31,7 +48,7 @@ class SearchViewController: UIViewController, UINibInitProtocol {
     }
     
     private func initViewModel() {
-        viewModel = SearchViewModel(fetcher: DataFetcher())
+        
     }
 }
 
@@ -48,10 +65,13 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
             for: indexPath
         ) as! CoinViewCell
         
-        
-        
         return cell
     }
     
-    
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        navigationController?.popViewController(animated: true)
+    }
 }

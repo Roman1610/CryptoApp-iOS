@@ -1,31 +1,37 @@
 import Foundation
+import Combine
 
 
 class MainViewModel: ObservableObject {
-    @Published private(set) var currencies = [Currency]()
     @Published private(set) var coins = [Coin]()
     @Published private(set) var coinMarkets = [CoinMarket]()
     
     @Published private(set) var isInitialLoading = false
     @Published private(set) var isLoadingPage = false
-    @Published private(set) var isCurrenciesLoading = false
     
-    @Published var currentCurrency = "usd" {
-        didSet {
-            refreshCoinMarkets()
-        }
-    }
+    private var currentCurrency: String
     
     private var currentLoadedPages = 0
     private let repository: MainRepositoryProtocol
+    private var cancellables = [AnyCancellable]()
+    
+    deinit {
+        for c in cancellables {
+            c.cancel()
+        }
+    }
     
     required init(fetcher: DataFetcherProtocol) {
         self.repository = MainRepository(fetcher: fetcher)
+        currentCurrency = UserDefaults.currency
+        UserDefaults.$currency.sink { [weak self] newValue in
+            self?.currentCurrency = newValue
+            self?.refreshCoinMarkets()
+        }.store(in: &cancellables)
     }
     
     func loadData() {
         loadCoinMarkets()
-        loadSupportedCurrencies()
     }
     
     func refreshCoinMarkets() {
@@ -37,15 +43,6 @@ class MainViewModel: ObservableObject {
     func loadMore() {
         loadCoinMarkets()
     }
-    
-//    func loadAllCoins() {
-//        isLoadingPage = true
-//        repository.fetchAllData { [weak self] coinsData in
-//            DispatchQueue.main.async {
-//                self?.coins = coinsData
-//            }
-//        }
-//    }
     
     private func loadCoinMarkets() {
         guard !isLoadingPage && !isInitialLoading else {
@@ -65,17 +62,6 @@ class MainViewModel: ObservableObject {
             self?.currentLoadedPages += 1
             self?.isLoadingPage = false
             self?.isInitialLoading = false
-        }
-    }
-    
-    private func loadSupportedCurrencies() {
-        isCurrenciesLoading = true
-        repository.fetchSupportedCurrencies { [weak self] currencies in
-            DispatchQueue.main.async {
-                debugPrint("MainViewModel: fetchSupportedCurrencies -", currencies)
-                self?.currencies = currencies
-            }
-            self?.isCurrenciesLoading = false
         }
     }
 }

@@ -4,60 +4,65 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="CurrencyApp" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <viewController id="T2v-F8-3Qq" customClass="SearchViewController" customModule="CurrencyApp" customModuleProvider="target">
-            <view key="view" contentMode="scaleToFill" id="Eoz-Dh-Kbt">
+        <viewController id="sl0-wV-9vy" customClass="SearchViewController" customModule="CurrencyApp" customModuleProvider="target">
+            <view key="view" contentMode="scaleToFill" id="UIo-WP-EBa">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ja0-Y0-dhq">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kmP-O0-ddo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Поиск" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BPB-1Z-PgM">
+                            <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Поиск" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1TD-Ze-qfD">
                                 <rect key="frame" x="10" y="49" width="394" height="51"/>
+                                <color key="tintColor" name="searchActionColor"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="BPB-1Z-PgM" secondAttribute="trailing" constant="10" id="ags-cI-ODo"/>
-                            <constraint firstAttribute="height" constant="100" id="deV-YC-kAd"/>
-                            <constraint firstItem="BPB-1Z-PgM" firstAttribute="leading" secondItem="ja0-Y0-dhq" secondAttribute="leading" constant="10" id="e5h-ln-f4k"/>
-                            <constraint firstAttribute="bottom" secondItem="BPB-1Z-PgM" secondAttribute="bottom" id="nMb-oi-aGR"/>
+                            <constraint firstAttribute="height" constant="100" id="Gc5-mL-bc7"/>
+                            <constraint firstAttribute="trailing" secondItem="1TD-Ze-qfD" secondAttribute="trailing" constant="10" id="R7g-Eo-IKG"/>
+                            <constraint firstAttribute="bottom" secondItem="1TD-Ze-qfD" secondAttribute="bottom" id="gPd-OF-yG1"/>
+                            <constraint firstItem="1TD-Ze-qfD" firstAttribute="leading" secondItem="kmP-O0-ddo" secondAttribute="leading" constant="10" id="l5G-Kj-oMM"/>
                         </constraints>
                     </view>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DZG-gj-JX5">
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zhY-ok-E5p">
                         <rect key="frame" x="0.0" y="100" width="414" height="762"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="searchBgColor"/>
                     </tableView>
                 </subviews>
-                <viewLayoutGuide key="safeArea" id="e6Z-39-wBj"/>
-                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                <viewLayoutGuide key="safeArea" id="Oqz-YB-TjW"/>
+                <color key="backgroundColor" name="searchBgColor"/>
                 <constraints>
-                    <constraint firstItem="e6Z-39-wBj" firstAttribute="bottom" secondItem="DZG-gj-JX5" secondAttribute="bottom" id="U6M-4L-jIw"/>
-                    <constraint firstItem="DZG-gj-JX5" firstAttribute="top" secondItem="ja0-Y0-dhq" secondAttribute="bottom" id="VAp-BL-zeW"/>
-                    <constraint firstItem="ja0-Y0-dhq" firstAttribute="top" secondItem="e6Z-39-wBj" secondAttribute="top" constant="-44" id="VqZ-yd-mvJ"/>
-                    <constraint firstItem="DZG-gj-JX5" firstAttribute="leading" secondItem="e6Z-39-wBj" secondAttribute="leading" id="k5k-X6-f9j"/>
-                    <constraint firstItem="e6Z-39-wBj" firstAttribute="trailing" secondItem="ja0-Y0-dhq" secondAttribute="trailing" id="l0B-OZ-G6D"/>
-                    <constraint firstItem="e6Z-39-wBj" firstAttribute="trailing" secondItem="DZG-gj-JX5" secondAttribute="trailing" id="uLH-Sa-sTz"/>
-                    <constraint firstItem="ja0-Y0-dhq" firstAttribute="leading" secondItem="e6Z-39-wBj" secondAttribute="leading" id="yav-OK-SD5"/>
+                    <constraint firstItem="kmP-O0-ddo" firstAttribute="top" secondItem="Oqz-YB-TjW" secondAttribute="top" constant="-44" id="EdT-VR-0zb"/>
+                    <constraint firstItem="kmP-O0-ddo" firstAttribute="trailing" secondItem="Oqz-YB-TjW" secondAttribute="trailing" id="FHG-oe-8qu"/>
+                    <constraint firstItem="zhY-ok-E5p" firstAttribute="bottom" secondItem="Oqz-YB-TjW" secondAttribute="bottom" id="FXK-qf-Bv4"/>
+                    <constraint firstItem="zhY-ok-E5p" firstAttribute="trailing" secondItem="Oqz-YB-TjW" secondAttribute="trailing" id="HPa-TR-dsd"/>
+                    <constraint firstItem="kmP-O0-ddo" firstAttribute="leading" secondItem="Oqz-YB-TjW" secondAttribute="leading" id="YEU-cN-vsD"/>
+                    <constraint firstItem="zhY-ok-E5p" firstAttribute="top" secondItem="kmP-O0-ddo" secondAttribute="bottom" id="daX-Rn-bSL"/>
+                    <constraint firstItem="zhY-ok-E5p" firstAttribute="leading" secondItem="Oqz-YB-TjW" secondAttribute="leading" id="sAi-dR-IFI"/>
+                    <constraint firstItem="zhY-ok-E5p" firstAttribute="top" secondItem="kmP-O0-ddo" secondAttribute="bottom" id="yKZ-ZF-vjl"/>
                 </constraints>
             </view>
             <connections>
-                <outlet property="tableView" destination="DZG-gj-JX5" id="Pml-sh-34W"/>
+                <outlet property="searchBar" destination="1TD-Ze-qfD" id="2aH-eC-t8t"/>
+                <outlet property="tableView" destination="zhY-ok-E5p" id="XiG-54-c2w"/>
             </connections>
-            <point key="canvasLocation" x="404" y="-573"/>
+            <point key="canvasLocation" x="158" y="-1862"/>
         </viewController>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="searchActionColor">
+            <color red="0.31400001049041748" green="0.7369999885559082" blue="0.31000000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="searchBgColor">
+            <color red="0.0080000003799796104" green="0.012000000104308128" blue="0.012000000104308128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

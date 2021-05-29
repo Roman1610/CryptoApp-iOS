@@ -5,7 +5,7 @@ import Combine
 import Kingfisher
 
 
-class CoinDetailVC: UIViewController {
+class CoinDetailViewController: UIViewController, UINibInitProtocol {
     
     // MARK: - IBOutlets
     
@@ -35,24 +35,11 @@ class CoinDetailVC: UIViewController {
     
     // MARK: - Properties
     
-    private var coinMarket: CoinMarket?
-    private var currency: String = ""
+    weak var coordinator: MainCoordinatorProtocol?
     
+    private var coinMarket: CoinMarket?
     private var coinViewModel: CoinDetailViewModel!
     private var cancellables: [AnyCancellable] = []
-    
-    // MARK: - Init
-    
-    static func getController(
-        coinMarket: CoinMarket,
-        currency: String
-    ) -> UIViewController {
-        let storyboard = UIStoryboard(name: "CoinDetail", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "CoinDetailVC") as! CoinDetailVC
-        vc.coinMarket = coinMarket
-        vc.currency = currency
-        return vc
-    }
     
     // MARK: - Lifecycle
     
@@ -67,24 +54,27 @@ class CoinDetailVC: UIViewController {
         
         initTimePeriodButtons()
         configChartView()
-        initViewModel()
-        configHeader()
     }
     
     // MARK: - IBActions
     
     @IBAction func didBackClicked(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
+        coordinator?.popViewController()
+    }
+    
+    // MARK: - Methods
+    
+    func setCoin(_ coin: CoinMarket) {
+        coinMarket = coin
+        configHeader()
+    }
+    
+    func setViewModel(_ viewModel: CoinDetailViewModel) {
+        coinViewModel = viewModel
+        initViewModel()
     }
     
     private func initViewModel() {
-        coinViewModel = CoinDetailViewModel(
-            fetcher: DataFetcher(),
-            coinId: coinMarket?.id ?? "",
-            coinName: coinMarket?.name ?? "",
-            currency: currency
-        )
-        
         let chartDataCancellable = coinViewModel.$prices.sink {
             [weak self] prices in
             var chartData = [ChartDataEntry]()
@@ -127,7 +117,7 @@ class CoinDetailVC: UIViewController {
             let btn = UIButton()
             btn.tag = timePeriod.rawValue
             
-            btn.setTitleColor(UIColor.black, for: .normal)
+            btn.setTitleColor(UIColor.getAppThemeColor(AppThemeColor.coinDetailPeriodInactiveTextColor), for: .normal)
             btn.setTitle(timePeriod.getName(), for: .normal)
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
             
@@ -135,6 +125,7 @@ class CoinDetailVC: UIViewController {
                                         target: self,
                                         action: #selector(didTimePeriodClicked(_:))
             ))
+            
             btn.layer.cornerRadius = timePeriodsStackView.bounds.height / 2
             btn.translatesAutoresizingMaskIntoConstraints = false
             
@@ -176,11 +167,11 @@ class CoinDetailVC: UIViewController {
         let allButtons = timePeriodsStackView.subviews
         for btn in allButtons {
             if btn.tag == period.rawValue {
-                btn.layer.backgroundColor = UIColor.systemGreen.cgColor
-                (btn as? UIButton)?.setTitleColor(UIColor.white, for: .normal)
+                btn.layer.backgroundColor = UIColor.getAppThemeColor(AppThemeColor.coinDetailPeriodBgColor).cgColor
+                (btn as? UIButton)?.setTitleColor(UIColor.getAppThemeColor(AppThemeColor.coinDetailPeriodActiveTextColor), for: .normal)
             } else {
                 btn.layer.backgroundColor = UIColor.clear.cgColor
-                (btn as? UIButton)?.setTitleColor(UIColor.black, for: .normal)
+                (btn as? UIButton)?.setTitleColor(UIColor.getAppThemeColor(AppThemeColor.coinDetailPeriodInactiveTextColor), for: .normal)
             }
         }
     }

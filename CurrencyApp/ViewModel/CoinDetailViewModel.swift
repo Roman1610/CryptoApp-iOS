@@ -21,12 +21,12 @@ class CoinDetailViewModel: ObservableObject {
         debugPrint("CoinDetailViewModel deinit")
     }
     
-    init(fetcher: DataFetcherProtocol, coinId: String, coinName: String, currency: String) {
+    init(fetcher: DataFetcherProtocol, coinId: String, coinName: String) {
         debugPrint("CoinDetailViewModel init")
         self.repository = CoinDetailRepository(fetcher: fetcher)
         self.coinId = coinId
         self.coinName = coinName
-        self.currency = currency
+        self.currency = UserDefaults.currency
     }
     
     func loadChart() {

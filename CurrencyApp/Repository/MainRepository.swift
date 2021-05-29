@@ -4,7 +4,6 @@ import Foundation
 protocol MainRepositoryProtocol {
     init(fetcher: DataFetcherProtocol)
     
-    func fetchSupportedCurrencies(result: @escaping ([Currency]) -> ())
     func fetchAllData(result: @escaping ([Coin]) -> ())
     func fetchCoinMarkets(page: Int, currency: String, order: GeckoSortResultEnum?, perPage: Int, result: @escaping ([CoinMarket]) -> ())
 }
@@ -21,12 +20,6 @@ class MainRepository: MainRepositoryProtocol {
     
     required init(fetcher: DataFetcherProtocol) {
         self.fetcher = fetcher
-    }
-    
-    func fetchSupportedCurrencies(result: @escaping ([Currency]) -> ()) {
-        fetcher.fetchSupportedCurrencies { currenciesData in
-            result(currenciesData.map(Currency.init))
-        }
     }
     
     func fetchAllData(result: @escaping ([Coin]) -> ()) {
