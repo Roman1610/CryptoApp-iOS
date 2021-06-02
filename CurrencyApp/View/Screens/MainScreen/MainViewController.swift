@@ -15,7 +15,7 @@ class MainViewController: UIViewController, UINibInitProtocol {
     // MARK: - Views
     
     private lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
+        let refreshControl = CustomRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshCoins(_:)), for: .valueChanged)
         refreshControl.tintColor = .white
         
@@ -39,10 +39,6 @@ class MainViewController: UIViewController, UINibInitProtocol {
     private var mainViewModel: MainViewModel!
     private var viewModelCancellables: [AnyCancellable] = []
     private var coinsMarket: [CoinMarket] = []
-    
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return .lightContent
-    }
     
     // MARK: - Lifecycle
     

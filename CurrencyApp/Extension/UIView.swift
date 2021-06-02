@@ -23,4 +23,18 @@ extension UIView {
         self.layer.shadowRadius = radius
     }
     
+    class func getNestedSubviews<T: UIView>(view: UIView) -> [T] {
+        return view.subviews.flatMap { subView -> [T] in
+            var result = getNestedSubviews(view: subView) as [T]
+            if let view = subView as? T {
+                result.append(view)
+            }
+            return result
+        }
+    }
+
+    func getNestedSubviews<T: UIView>() -> [T] {
+        return UIView.getNestedSubviews(view: self) as [T]
+    }
+    
 }

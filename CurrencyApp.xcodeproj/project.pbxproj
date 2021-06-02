@@ -12,6 +12,7 @@
 		560B239726629B6D0056F616 /* CoinDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 560B239626629B6D0056F616 /* CoinDetailViewController.xib */; };
 		560B23992662A3240056F616 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560B23982662A3240056F616 /* UIColor.swift */; };
 		560B239C2662A36D0056F616 /* AppThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560B239B2662A36D0056F616 /* AppThemeColor.swift */; };
+		56A27D23266798ED004D7F27 /* CustomRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A27D22266798ED004D7F27 /* CustomRefreshControl.swift */; };
 		56A415FC26615A9F005812FA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A415FA26615A9F005812FA /* SearchViewController.swift */; };
 		56A415FD26615A9F005812FA /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A415FB26615A9F005812FA /* SearchViewController.xib */; };
 		56A4160026615CDD005812FA /* UINibInitProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A415FF26615CDD005812FA /* UINibInitProtocol.swift */; };
@@ -83,6 +84,7 @@
 		560B239626629B6D0056F616 /* CoinDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinDetailViewController.xib; sourceTree = "<group>"; };
 		560B23982662A3240056F616 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		560B239B2662A36D0056F616 /* AppThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppThemeColor.swift; sourceTree = "<group>"; };
+		56A27D22266798ED004D7F27 /* CustomRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRefreshControl.swift; sourceTree = "<group>"; };
 		56A415FA26615A9F005812FA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		56A415FB26615A9F005812FA /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		56A415FF26615CDD005812FA /* UINibInitProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINibInitProtocol.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				56EF33A3264F4C3900F865F3 /* DropDownView */,
+				56A27D22266798ED004D7F27 /* CustomRefreshControl.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				560B23992662A3240056F616 /* UIColor.swift in Sources */,
 				56A766612650035E006ADB42 /* CoinDetailViewController.swift in Sources */,
 				56A4160026615CDD005812FA /* UINibInitProtocol.swift in Sources */,
+				56A27D23266798ED004D7F27 /* CustomRefreshControl.swift in Sources */,
 				56EF3374264EEAFE00F865F3 /* MainViewModel.swift in Sources */,
 				56EF337F264EEAFE00F865F3 /* Coin.swift in Sources */,
 				56EF339F264F33E900F865F3 /* CurrencyViewCell.swift in Sources */,
