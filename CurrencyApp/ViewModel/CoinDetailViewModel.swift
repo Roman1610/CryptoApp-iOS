@@ -30,6 +30,7 @@ class CoinDetailViewModel: ObservableObject {
     }
     
     func loadChart() {
+        debugPrint("CoinDetailViewModel loadChart")
         isLoading = true
         let currentTimestamp = Int(Date().timeIntervalSince1970) * 1000
         let beforeTimestamp = currentTimestamp - period.rawValue

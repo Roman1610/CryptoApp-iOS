@@ -12,6 +12,9 @@
 		560B239726629B6D0056F616 /* CoinDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 560B239626629B6D0056F616 /* CoinDetailViewController.xib */; };
 		560B23992662A3240056F616 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560B23982662A3240056F616 /* UIColor.swift */; };
 		560B239C2662A36D0056F616 /* AppThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560B239B2662A36D0056F616 /* AppThemeColor.swift */; };
+		565A26CD266E5BBE00C35A88 /* CoinDetailSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565A26CC266E5BBE00C35A88 /* CoinDetailSwiftUIView.swift */; };
+		565A26CF266E5CA000C35A88 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565A26CE266E5CA000C35A88 /* View.swift */; };
+		565A26D2266E5EAA00C35A88 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 565A26D1266E5EAA00C35A88 /* SwiftUICharts */; };
 		56A27D23266798ED004D7F27 /* CustomRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A27D22266798ED004D7F27 /* CustomRefreshControl.swift */; };
 		56A415FC26615A9F005812FA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A415FA26615A9F005812FA /* SearchViewController.swift */; };
 		56A415FD26615A9F005812FA /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A415FB26615A9F005812FA /* SearchViewController.xib */; };
@@ -84,6 +87,8 @@
 		560B239626629B6D0056F616 /* CoinDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinDetailViewController.xib; sourceTree = "<group>"; };
 		560B23982662A3240056F616 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		560B239B2662A36D0056F616 /* AppThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppThemeColor.swift; sourceTree = "<group>"; };
+		565A26CC266E5BBE00C35A88 /* CoinDetailSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailSwiftUIView.swift; sourceTree = "<group>"; };
+		565A26CE266E5CA000C35A88 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		56A27D22266798ED004D7F27 /* CustomRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRefreshControl.swift; sourceTree = "<group>"; };
 		56A415FA26615A9F005812FA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		56A415FB26615A9F005812FA /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
@@ -142,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56EF3393264EFF2D00F865F3 /* Kingfisher in Frameworks */,
+				565A26D2266E5EAA00C35A88 /* SwiftUICharts in Frameworks */,
 				56A7665C265001FB006ADB42 /* Charts in Frameworks */,
 				56EF3384264EEBF200F865F3 /* Alamofire in Frameworks */,
 			);
@@ -206,6 +212,7 @@
 			children = (
 				56A766602650035E006ADB42 /* CoinDetailViewController.swift */,
 				560B239626629B6D0056F616 /* CoinDetailViewController.xib */,
+				565A26CC266E5BBE00C35A88 /* CoinDetailSwiftUIView.swift */,
 			);
 			path = CoinDetailScreen;
 			sourceTree = "<group>";
@@ -302,6 +309,7 @@
 				56EF33A1264F372E00F865F3 /* UIView.swift */,
 				560B23922662974D0056F616 /* UserDefaults.swift */,
 				560B23982662A3240056F616 /* UIColor.swift */,
+				565A26CE266E5CA000C35A88 /* View.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -445,6 +453,7 @@
 				56EF3383264EEBF200F865F3 /* Alamofire */,
 				56EF3392264EFF2D00F865F3 /* Kingfisher */,
 				56A7665B265001FB006ADB42 /* Charts */,
+				565A26D1266E5EAA00C35A88 /* SwiftUICharts */,
 			);
 			productName = CurrencyApp;
 			productReference = 56EF3327264EE82B00F865F3 /* CurrencyApp.app */;
@@ -521,6 +530,7 @@
 				56EF3382264EEBF200F865F3 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				56EF3391264EFF2D00F865F3 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				56A7665A265001FB006ADB42 /* XCRemoteSwiftPackageReference "Charts" */,
+				565A26D0266E5EAA00C35A88 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = 56EF3328264EE82B00F865F3 /* Products */;
 			projectDirPath = "";
@@ -580,6 +590,7 @@
 				56EF338C264EF55800F865F3 /* CoinViewCell.swift in Sources */,
 				56A4160426615F74005812FA /* SearchRepository.swift in Sources */,
 				56EF3378264EEAFE00F865F3 /* GeckoSortResultEnum.swift in Sources */,
+				565A26CD266E5BBE00C35A88 /* CoinDetailSwiftUIView.swift in Sources */,
 				56EF3380264EEAFE00F865F3 /* CoinMarket.swift in Sources */,
 				56A415FC26615A9F005812FA /* SearchViewController.swift in Sources */,
 				560B239526629A460056F616 /* SettingsRepository.swift in Sources */,
@@ -602,6 +613,7 @@
 				56A98F1426626923007D0F4E /* SettingsViewController.swift in Sources */,
 				56A98F1A26626DAE007D0F4E /* MainCoordinator.swift in Sources */,
 				56A4160226615EB0005812FA /* SearchViewModel.swift in Sources */,
+				565A26CF266E5CA000C35A88 /* View.swift in Sources */,
 				560B23992662A3240056F616 /* UIColor.swift in Sources */,
 				56A766612650035E006ADB42 /* CoinDetailViewController.swift in Sources */,
 				56A4160026615CDD005812FA /* UINibInitProtocol.swift in Sources */,
@@ -935,6 +947,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		565A26D0266E5EAA00C35A88 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.5;
+			};
+		};
 		56A7665A265001FB006ADB42 /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielgindi/Charts";
@@ -962,6 +982,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		565A26D1266E5EAA00C35A88 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 565A26D0266E5EAA00C35A88 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
 		56A7665B265001FB006ADB42 /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 56A7665A265001FB006ADB42 /* XCRemoteSwiftPackageReference "Charts" */;

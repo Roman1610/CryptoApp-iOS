@@ -35,17 +35,32 @@ class MainCoordinator: Coordinator {
 
 extension MainCoordinator: MainCoordinatorProtocol {
    
+//    func navigateToCoinDetail(_ coin: CoinMarket) {
+//        let coinViewModel = CoinDetailViewModel(
+//            fetcher: dataFetcher,
+//            coinId: coin.id,
+//            coinName: coin.name
+//        )
+//        let vc = CoinDetailViewController.instantiate()
+//        vc.coordinator = self
+//        vc.setViewModel(coinViewModel)
+//        vc.setCoin(coin)
+//        navigationController.pushViewController(vc, animated: true)
+//    }
+    
     func navigateToCoinDetail(_ coin: CoinMarket) {
         let coinViewModel = CoinDetailViewModel(
             fetcher: dataFetcher,
             coinId: coin.id,
             coinName: coin.name
         )
-        let vc = CoinDetailViewController.instantiate()
-        vc.coordinator = self
-        vc.setViewModel(coinViewModel)
-        vc.setCoin(coin)
-        navigationController.pushViewController(vc, animated: true)
+        
+        let view = CoinDetailSwiftUIView(
+            coin: coin,
+            viewModel: coinViewModel,
+            coordinator: self
+        )
+        navigationController.pushViewController(view.buildVC(), animated: true)
     }
     
     func navigateToSearch() {
@@ -65,5 +80,5 @@ extension MainCoordinator: MainCoordinatorProtocol {
     func popViewController() {
         navigationController.popViewController(animated: true)
     }
-    
+
 }

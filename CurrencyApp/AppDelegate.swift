@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  CurrencyApp
-//
-//  Created by Roman Fullstack on 14.05.2021.
-//
-
 import UIKit
 
 @main

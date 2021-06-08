@@ -24,6 +24,12 @@ class SettingsViewController: UIViewController, UINibInitProtocol {
         initViewModel()
     }
     
+    // MARK: - @IBActions
+    
+    @IBAction func didBackClicked(_ sender: UIButton) {
+        coordinator?.popViewController()
+    }
+    
     private func initViewModel() {
         
     }
@@ -32,7 +38,6 @@ class SettingsViewController: UIViewController, UINibInitProtocol {
         currencySettingView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didChangeCurrencyClicked(_:))))
     }
 
-    
     @objc private func didChangeCurrencyClicked(_ sender: UITapGestureRecognizer) {
         // Открыть sheet с валютами
     }
