@@ -1,15 +1,14 @@
-import Foundation
 import UIKit
 import SwiftUI
 
-
-extension UIColor {
+public extension UIColor {
+    
     static func getAppThemeColor(_ name: AppThemeColor) -> UIColor {
         return UIColor(named: name.rawValue)!
     }
 }
 
-extension Color {
+public extension Color {
     static func getAppThemeColor(_ name: AppThemeColor) -> Color {
         return Color(name.rawValue)
     }

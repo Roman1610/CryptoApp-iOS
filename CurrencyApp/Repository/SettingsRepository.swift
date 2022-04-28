@@ -1,5 +1,5 @@
 import Foundation
-
+import Networking
 
 protocol SettingsRepositoryProtocol {
     init(fetcher: DataFetcherProtocol)

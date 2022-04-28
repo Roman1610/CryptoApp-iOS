@@ -1,5 +1,5 @@
 import Foundation
-
+import Networking
 
 struct CoinRoi: Hashable {
     let times: Double

@@ -1,6 +1,6 @@
 import Foundation
 import UIKit
-
+import Networking
 
 protocol MainCoordinatorProtocol: AnyObject {
     func navigateToCoinDetail(_ coin: CoinMarket)
@@ -8,7 +8,6 @@ protocol MainCoordinatorProtocol: AnyObject {
     func navigateToSettings()
     func popViewController()
 }
-
 
 class MainCoordinator: Coordinator {
     
@@ -29,7 +28,6 @@ class MainCoordinator: Coordinator {
         vc.setViewModel(viewModel: MainViewModel(fetcher: dataFetcher))
         navigationController.pushViewController(vc, animated: true)
     }
-    
 }
 
 

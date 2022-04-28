@@ -1,7 +1,6 @@
 import Foundation
 
-
-enum AppThemeColor: String {
+public enum AppThemeColor: String {
     
     // MARK: - CoinDetail
     
@@ -11,6 +10,4 @@ enum AppThemeColor: String {
     case coinDetailPeriodActiveTextColor = "coinDetailPeriodActiveTextColor"
     case coinDetailPeriodInactiveTextColor = "coinDetailPeriodInactiveTextColor"
     case coinDetailTextColor = "coinDetailTextColor"
-    
-    
 }

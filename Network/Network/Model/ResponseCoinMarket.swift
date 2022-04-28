@@ -1,39 +1,38 @@
 import Foundation
 
-
-struct ResponseCoinMarket: Decodable {
-    let id: String
-    let symbol: String
-    let name: String
-    let image: String
-    let currentPrice: Double
-    let marketCap: Double
-    let marketCapRank: Int
-    let fullyDilutedValuation: Int64?
-    let totalVolume: Double
-    let high24h: Double?
-    let low24h: Double?
-    let priceChange24h: Double?
-    let priceChangePercentage24h: Double?
-    let marketCapChange24h: Double?
-    let marketCapChangePercentage24h: Double?
-    let circulatingSupply: Double?
-    let totalSupply: Double?
-    let maxSupply: Double?
-    let ath: Double
-    let athChangePercentage: Double
-    let athDate: String
-    let atl: Double
-    let atlChangePercentage: Double
-    let atlDate: String
-    let roi: ResponseCoinRoi?
-    let lastUpdated: String
+public struct ResponseCoinMarket: Decodable {
+    public let id: String
+    public let symbol: String
+    public let name: String
+    public let image: String
+    public let currentPrice: Double
+    public let marketCap: Double
+    public let marketCapRank: Int
+    public let fullyDilutedValuation: Int64?
+    public let totalVolume: Double
+    public let high24h: Double?
+    public let low24h: Double?
+    public let priceChange24h: Double?
+    public let priceChangePercentage24h: Double?
+    public let marketCapChange24h: Double?
+    public let marketCapChangePercentage24h: Double?
+    public let circulatingSupply: Double?
+    public let totalSupply: Double?
+    public let maxSupply: Double?
+    public let ath: Double
+    public let athChangePercentage: Double
+    public let athDate: String
+    public let atl: Double
+    public let atlChangePercentage: Double
+    public let atlDate: String
+    public let roi: ResponseCoinRoi?
+    public let lastUpdated: String
     
     private enum CodingKeys: String, CodingKey {
         case id, symbol, name, image, current_price, market_cap, market_cap_rank, fully_diluted_valuation, total_volume, high_24h, low_24h, price_change_24h, price_change_percentage_24h, market_cap_change_24h, market_cap_change_percentage_24h, circulating_supply, total_supply, max_supply, ath, ath_change_percentage, ath_date, atl, atl_change_percentage, atl_date, roi, last_updated
     }
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         id = try container.decode(String.self, forKey: .id)
@@ -66,16 +65,16 @@ struct ResponseCoinMarket: Decodable {
 }
 
 
-struct ResponseCoinRoi: Decodable {
-    let times: Double
-    let currency: String
-    let percentage: Double
+public struct ResponseCoinRoi: Decodable {
+    public let times: Double
+    public let currency: String
+    public let percentage: Double
     
     private enum CodingKeys: String, CodingKey {
         case times, currency, percentage
     }
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         times = try container.decode(Double.self, forKey: .times)

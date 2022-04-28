@@ -2,7 +2,8 @@ import Foundation
 import SwiftUI
 import Combine
 import SwiftUICharts
-
+import Resources
+import Networking
 
 struct CoinDetailSwiftUIView: View {
     private var coordinator: MainCoordinatorProtocol? = nil

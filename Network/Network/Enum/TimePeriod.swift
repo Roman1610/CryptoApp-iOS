@@ -1,7 +1,6 @@
 import Foundation
 
-
-enum TimePeriod: Int, CaseIterable {
+public enum TimePeriod: Int, CaseIterable {
     case last1h = 3600000
     case last24h = 86400000
     case lastWeek = 604800000
@@ -9,7 +8,7 @@ enum TimePeriod: Int, CaseIterable {
     case lastHalfYeah = 15552000000
     case lastYear = 31104000000
     
-    static func getNames() -> [String] {
+    public static func getNames() -> [String] {
         var names = [String]()
         
         for period in TimePeriod.allCases {
@@ -32,7 +31,7 @@ enum TimePeriod: Int, CaseIterable {
         return names
     }
     
-    func getName() -> String {
+    public func getName() -> String {
         switch self {
         case .last1h:
             return "1H"

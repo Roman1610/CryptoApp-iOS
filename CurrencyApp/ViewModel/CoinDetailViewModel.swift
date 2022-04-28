@@ -1,7 +1,8 @@
 import Foundation
-
+import Networking
 
 class CoinDetailViewModel: ObservableObject {
+    
     @Published var period = TimePeriod.last24h {
         didSet {
             loadChart()
@@ -30,12 +31,16 @@ class CoinDetailViewModel: ObservableObject {
     }
     
     func loadChart() {
-        debugPrint("CoinDetailViewModel loadChart")
         isLoading = true
         let currentTimestamp = Int(Date().timeIntervalSince1970) * 1000
         let beforeTimestamp = currentTimestamp - period.rawValue
         
-        repository.fetchCoinChartRange(id: coinId, currency: currency, from: beforeTimestamp / 1000, to: currentTimestamp / 1000) { data in
+        repository.fetchCoinChartRange(id: coinId,
+                                       currency: currency,
+                                       from: beforeTimestamp / 1000,
+                                       to: currentTimestamp / 1000) {
+            data in
+            
             DispatchQueue.global(qos: .background).async {
                 var min = Double.greatestFiniteMagnitude
                 for item in data {
@@ -51,12 +56,9 @@ class CoinDetailViewModel: ObservableObject {
                 
                 DispatchQueue.main.async {
                     self.prices = prices
-                    debugPrint("CoinDetailViewModel: loadData \(data.count)")
                     self.isLoading = false
                 }
             }
         }
     }
-    
-    
 }

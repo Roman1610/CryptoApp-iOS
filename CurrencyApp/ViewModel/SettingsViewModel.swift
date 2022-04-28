@@ -1,7 +1,8 @@
 import Foundation
-
+import Networking
 
 class SettingsViewModel: ObservableObject {
+    
     @Published private(set) var currencies = [Currency]()
     @Published private(set) var isLoading = false
     
@@ -13,9 +14,10 @@ class SettingsViewModel: ObservableObject {
     
     private func loadSupportedCurrencies() {
         isLoading = true
-        repository.fetchSupportedCurrencies { [weak self] currencies in
+        repository.fetchSupportedCurrencies {
+            [weak self] currencies in
+            
             DispatchQueue.main.async {
-                debugPrint("MainViewModel: fetchSupportedCurrencies -", currencies)
                 self?.currencies = currencies
             }
             self?.isLoading = false

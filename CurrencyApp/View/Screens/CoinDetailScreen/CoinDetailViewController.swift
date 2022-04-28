@@ -1,9 +1,9 @@
-import Foundation
 import UIKit
 import Charts
-import Combine
 import Kingfisher
-
+import Networking
+import Resources
+import Combine
 
 class CoinDetailViewController: UIViewController, UINibInitProtocol {
     
@@ -44,9 +44,7 @@ class CoinDetailViewController: UIViewController, UINibInitProtocol {
     // MARK: - Lifecycle
     
     deinit {
-        cancellables.forEach { cancellable in
-            cancellable.cancel()
-        }
+        cancellables.forEach { $0.cancel() }
     }
     
     override func viewDidLoad() {

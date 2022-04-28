@@ -1,8 +1,9 @@
 import Foundation
 import Combine
-
+import Networking
 
 class MainViewModel: ObservableObject {
+    
     @Published private(set) var coins = [Coin]()
     @Published private(set) var coinMarkets = [CoinMarket]()
     
@@ -16,15 +17,15 @@ class MainViewModel: ObservableObject {
     private var cancellables = [AnyCancellable]()
     
     deinit {
-        for c in cancellables {
-            c.cancel()
-        }
+        cancellables.forEach { $0.cancel() }
     }
     
     required init(fetcher: DataFetcherProtocol) {
         self.repository = MainRepository(fetcher: fetcher)
         currentCurrency = UserDefaults.currency
-        UserDefaults.$currency.sink { [weak self] newValue in
+        UserDefaults.$currency.sink {
+            [weak self] newValue in
+            
             self?.currentCurrency = newValue
             self?.refreshCoinMarkets()
         }.store(in: &cancellables)
@@ -55,7 +56,10 @@ class MainViewModel: ObservableObject {
             isLoadingPage = true
         }
         
-        repository.fetchCoinMarkets(page: currentLoadedPages + 1, currency: currentCurrency) { [weak self] coinMarketsData in
+        repository.fetchCoinMarkets(page: currentLoadedPages + 1,
+                                    currency: currentCurrency) {
+            [weak self] coinMarketsData in
+            
             DispatchQueue.main.async {
                 self?.coinMarkets += coinMarketsData
             }

@@ -1,5 +1,5 @@
 import Foundation
-
+import Networking
 
 protocol SearchRepositoryProtocol {
     init(fetcher: DataFetcherProtocol)

@@ -1,7 +1,8 @@
 import Foundation
-
+import Networking
 
 class SearchViewModel: ObservableObject {
+    
     @Published private(set) var coinMarkets = [CoinMarket]()
     
     @Published private(set) var isLoadingPage = false
@@ -33,7 +34,10 @@ class SearchViewModel: ObservableObject {
 
         isLoadingPage = true
         
-        repository.fetchCoinMarkets(page: currentLoadedPages + 1, currency: currentCurrency) { [weak self] coinMarketsData in
+        repository.fetchCoinMarkets(page: currentLoadedPages + 1,
+                                    currency: currentCurrency) {
+            [weak self] coinMarketsData in
+            
             DispatchQueue.main.async {
                 self?.coinMarkets += coinMarketsData
             }

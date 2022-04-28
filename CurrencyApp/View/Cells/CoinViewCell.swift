@@ -1,7 +1,6 @@
 import UIKit
 import Kingfisher
 
-
 class CoinViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
@@ -31,5 +30,4 @@ class CoinViewCell: UITableViewCell {
             KF.url(imageUrl).set(to: coinImage)
         }
     }
-    
 }

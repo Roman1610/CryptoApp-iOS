@@ -1,5 +1,5 @@
 import Foundation
-
+import Networking
 
 struct Coin: Hashable, Identifiable {
     let id: String

@@ -1,17 +1,28 @@
 import Foundation
 import Alamofire
 
-
-protocol DataFetcherProtocol: AnyObject {
+public protocol DataFetcherProtocol: AnyObject {
+    
     func fetchSupportedCurrencies(completion: @escaping ([String]) -> ())
     func fetchAllCoins(completion: @escaping ([ResponseCoin]) -> ())
-    func fetchCoinMarkets(page: Int, currency: String, order: GeckoSortResultEnum?, perPage: Int, completion: @escaping ([ResponseCoinMarket]) -> ())
-    func fetchCoinMarketChart(id: String, currency: String, days: Int, completion: @escaping (ResponseCoinMarketChartData) -> ())
-    func fetchCoinMarketChartRange(id: String, currency: String, from: Int, to: Int, completion: @escaping (ResponseCoinMarketChartData) -> ())
+    func fetchCoinMarkets(page: Int,
+                          currency: String,
+                          order: GeckoSortResultEnum?,
+                          perPage: Int,
+                          completion: @escaping ([ResponseCoinMarket]) -> ())
+    func fetchCoinMarketChart(id: String,
+                              currency: String,
+                              days: Int,
+                              completion: @escaping (ResponseCoinMarketChartData) -> ())
+    func fetchCoinMarketChartRange(id: String,
+                                   currency: String,
+                                   from: Int,
+                                   to: Int,
+                                   completion: @escaping (ResponseCoinMarketChartData) -> ())
 }
 
 
-class DataFetcher: DataFetcherProtocol {
+public class DataFetcher: DataFetcherProtocol {
     
     // MARK: - Variables
     
@@ -48,9 +59,11 @@ class DataFetcher: DataFetcherProtocol {
     
     private var chartDataRequest: DataRequest?
     
+    public init() {}
+    
     // MARK: - Methods
     
-    func fetchSupportedCurrencies(completion: @escaping ([String]) -> ()) {
+    public func fetchSupportedCurrencies(completion: @escaping ([String]) -> ()) {
         _ = request(.getSupportedCurrencies) { responseString in
             if let currenciesData = try? JSONDecoder().decode([String].self, from: responseString.data(using: .utf8)!) {
                 completion(currenciesData)
@@ -58,7 +71,7 @@ class DataFetcher: DataFetcherProtocol {
         }
     }
     
-    func fetchAllCoins(completion: @escaping ([ResponseCoin]) -> ()) {
+    public func fetchAllCoins(completion: @escaping ([ResponseCoin]) -> ()) {
         _ = request(.getCoins()) { responseString in
             if let coinsData = try? JSONDecoder().decode([ResponseCoin].self, from: responseString.data(using: .utf8)!) {
                 completion(coinsData)
@@ -66,27 +79,29 @@ class DataFetcher: DataFetcherProtocol {
         }
     }
     
-    func fetchCoinMarkets(
-        page: Int,
-        currency: String,
-        order: GeckoSortResultEnum? = nil,
-        perPage: Int = 50,
-        completion: @escaping ([ResponseCoinMarket]) -> ()
-    ) {
+    public func fetchCoinMarkets(page: Int,
+                                 currency: String,
+                                 order: GeckoSortResultEnum? = nil,
+                                 perPage: Int = 50,
+                                 completion: @escaping ([ResponseCoinMarket]) -> ()) {
         _ = request(.getCoinMarkets(currency: currency, page: page, order: order, perPage: perPage)) { responseString in
             let coinsData = try! JSONDecoder().decode([ResponseCoinMarket].self, from: responseString.data(using: .utf8)!)
             completion(coinsData)
         }
     }
     
-    func fetchCoinMarketChart(id: String, currency: String, days: Int, completion: @escaping (ResponseCoinMarketChartData) -> ()) {
+    public func fetchCoinMarketChart(id: String, currency: String, days: Int, completion: @escaping (ResponseCoinMarketChartData) -> ()) {
         chartDataRequest?.cancel()
         chartDataRequest = request(.getCoinMarketChart(id: id, currency: currency, days: days)) { responseString in
             completion(ResponseCoinMarketChartData(from: responseString, type: "prices"))
         }
     }
     
-    func fetchCoinMarketChartRange(id: String, currency: String, from: Int, to: Int, completion: @escaping (ResponseCoinMarketChartData) -> ()) {
+    public func fetchCoinMarketChartRange(id: String,
+                                          currency: String,
+                                          from: Int,
+                                          to: Int,
+                                          completion: @escaping (ResponseCoinMarketChartData) -> ()) {
         chartDataRequest?.cancel()
         chartDataRequest = request(.getCoinMarketChartRange(id: id, currency: currency, from: from, to: to)) { responseString in
             completion(ResponseCoinMarketChartData(from: responseString, type: "prices"))
@@ -109,5 +124,4 @@ class DataFetcher: DataFetcherProtocol {
             }
         }
     }
-    
 }

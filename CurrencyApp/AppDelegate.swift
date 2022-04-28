@@ -4,22 +4,21 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var coordinator: MainCoordinator?
-
+    private let rootViewController = UINavigationController()
+    private var coordinator: MainCoordinator!
+    
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        let navController = UINavigationController()
-        coordinator = MainCoordinator(navController)
-        coordinator?.start()
-
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = navController
+        window = UIWindow()
+        window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
+        
+        coordinator = MainCoordinator(rootViewController)
+        coordinator.start()
         
         return true
     }
-
 }
 

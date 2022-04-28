@@ -1,7 +1,6 @@
 import Foundation
 
-
-enum GeckoSortResultEnum: String {
+public enum GeckoSortResultEnum: String {
     case marketCapAsc = "market_cap_asc"
     case marketCapDesc = "market_cap_desc"
     case geckoAsc = "gecko_asc"
