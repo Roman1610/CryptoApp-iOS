@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crypto App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qNd-EO-RAv">
-                                <rect key="frame" x="20" y="58.5" width="139" height="31.5"/>
+                                <rect key="frame" x="20" y="58.5" width="139.5" height="31.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" name="mainTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -129,7 +129,7 @@
                         </constraints>
                     </view>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="J6h-MH-peO">
-                        <rect key="frame" x="0.0" y="150" width="414" height="712"/>
+                        <rect key="frame" x="0.0" y="150" width="414" height="746"/>
                         <color key="backgroundColor" name="bgColor"/>
                         <connections>
                             <outlet property="dataSource" destination="ChG-PM-MbC" id="hDI-QJ-obw"/>
@@ -142,14 +142,14 @@
                 <constraints>
                     <constraint firstItem="J6h-MH-peO" firstAttribute="leading" secondItem="Axu-iN-AF8" secondAttribute="leading" id="6PG-2E-wWb"/>
                     <constraint firstItem="yM8-lC-zj4" firstAttribute="leading" secondItem="Axu-iN-AF8" secondAttribute="leading" id="A2e-Hz-D9b"/>
-                    <constraint firstItem="J6h-MH-peO" firstAttribute="bottom" secondItem="Axu-iN-AF8" secondAttribute="bottom" id="Gyz-Dt-sVY"/>
+                    <constraint firstItem="J6h-MH-peO" firstAttribute="bottom" secondItem="LVg-eS-jpr" secondAttribute="bottom" id="Gyz-Dt-sVY"/>
                     <constraint firstItem="J6h-MH-peO" firstAttribute="top" secondItem="yM8-lC-zj4" secondAttribute="bottom" id="KO9-gr-3jf"/>
                     <constraint firstItem="yM8-lC-zj4" firstAttribute="top" secondItem="edY-7T-Rjz" secondAttribute="bottom" id="W6r-Bt-Wlz"/>
                     <constraint firstItem="yM8-lC-zj4" firstAttribute="trailing" secondItem="Axu-iN-AF8" secondAttribute="trailing" id="Yc0-NH-Fq6"/>
                     <constraint firstItem="J6h-MH-peO" firstAttribute="trailing" secondItem="Axu-iN-AF8" secondAttribute="trailing" id="eNh-Kl-Iei"/>
                     <constraint firstItem="edY-7T-Rjz" firstAttribute="trailing" secondItem="Axu-iN-AF8" secondAttribute="trailing" id="fdW-oL-opH"/>
                     <constraint firstItem="edY-7T-Rjz" firstAttribute="leading" secondItem="Axu-iN-AF8" secondAttribute="leading" id="mGz-vv-F9W"/>
-                    <constraint firstItem="edY-7T-Rjz" firstAttribute="top" secondItem="Axu-iN-AF8" secondAttribute="top" constant="-44" id="mum-qQ-l4b"/>
+                    <constraint firstItem="edY-7T-Rjz" firstAttribute="top" secondItem="LVg-eS-jpr" secondAttribute="top" id="mum-qQ-l4b"/>
                 </constraints>
             </view>
             <connections>

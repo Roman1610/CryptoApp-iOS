@@ -11,8 +11,10 @@ class CoinViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var percentLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        coinImage.image = nil
     }
     
     // MARK: - Methods
