@@ -1,7 +1,6 @@
 import UIKit
 import Combine
 
-
 class MainViewController: UIViewController, UINibInitProtocol {
     
     // MARK: - Constants
