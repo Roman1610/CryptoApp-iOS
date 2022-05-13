@@ -221,7 +221,7 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv
-  fastlane (= 2.182.0)
+  fastlane
   fastlane-plugin-eln!
 
 BUNDLED WITH

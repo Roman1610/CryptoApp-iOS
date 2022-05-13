@@ -19,3 +19,5 @@ gem install bundler
 
 # Gem
 bundle install
+
+bundle exec fastlane run eln_certs_get

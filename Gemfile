@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 source 'https://rubygems.org'
 
-gem 'fastlane', '2.182.0'
+gem 'fastlane'
 gem "dotenv"
 
 plugins_path = File.join(File.dirname(__FILE__), 'fastlane', 'Pluginfile')
