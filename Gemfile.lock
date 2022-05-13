@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/elegion/fastlane-plugin-eln
+  revision: e621484e815f58debc572f815d0197bcdf7936c5
+  specs:
+    fastlane-plugin-eln (0.1.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -214,7 +220,9 @@ PLATFORMS
   universal-darwin-21
 
 DEPENDENCIES
+  dotenv
   fastlane (= 2.182.0)
+  fastlane-plugin-eln!
 
 BUNDLED WITH
    2.2.25
