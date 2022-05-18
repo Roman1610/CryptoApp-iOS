@@ -145,16 +145,16 @@
 		56A98F1926626DAE007D0F4E /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		56A98F1C26626E0A007D0F4E /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		56A98F1F26626EA4007D0F4E /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		56EF3327264EE82B00F865F3 /* CurrencyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		56EF3327264EE82B00F865F3 /* CryptoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EF332A264EE82B00F865F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56EF332E264EE82B00F865F3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		56EF3333264EE82B00F865F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56EF3336264EE82B00F865F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56EF3338264EE82B00F865F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		56EF333D264EE82B00F865F3 /* CurrencyAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		56EF333D264EE82B00F865F3 /* CryptoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EF3341264EE82B00F865F3 /* CurrencyAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAppTests.swift; sourceTree = "<group>"; };
 		56EF3343264EE82B00F865F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		56EF3348264EE82B00F865F3 /* CurrencyAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		56EF3348264EE82B00F865F3 /* CryptoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EF334C264EE82B00F865F3 /* CurrencyAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAppUITests.swift; sourceTree = "<group>"; };
 		56EF334E264EE82B00F865F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56EF335B264EEAFE00F865F3 /* Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
@@ -251,18 +251,6 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		56A415F826615A5D005812FA /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-				56EF3335264EE82B00F865F3 /* LaunchScreen.storyboard */,
-				56A7665D265002B2006ADB42 /* CoinDetailScreen */,
-				56EF3386264EED1B00F865F3 /* MainScreen */,
-				56A415F926615A70005812FA /* SearchScreen */,
-				56A98F1126626900007D0F4E /* SettingsScreen */,
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
 		56A415F926615A70005812FA /* SearchScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,9 +321,9 @@
 		56EF3328264EE82B00F865F3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				56EF3327264EE82B00F865F3 /* CurrencyApp.app */,
-				56EF333D264EE82B00F865F3 /* CurrencyAppTests.xctest */,
-				56EF3348264EE82B00F865F3 /* CurrencyAppUITests.xctest */,
+				56EF3327264EE82B00F865F3 /* CryptoApp.app */,
+				56EF333D264EE82B00F865F3 /* CryptoAppTests.xctest */,
+				56EF3348264EE82B00F865F3 /* CryptoAppUITests.xctest */,
 				D9DCC9B6281B0CF1003E2E6C /* Networking.framework */,
 				D9DCC9C7281B0D7D003E2E6C /* Resources.framework */,
 			);
@@ -351,9 +339,10 @@
 				56EF335A264EEAFE00F865F3 /* Extension */,
 				56A415FE26615CC0005812FA /* Protocols */,
 				56EF335F264EEAFE00F865F3 /* Repository */,
-				D9363B8E282132F900CAC9B9 /* SupportFiles */,
+				D97817C928355671008581F5 /* Flow */,
 				56EF3385264EECE100F865F3 /* View */,
 				56EF335C264EEAFE00F865F3 /* ViewModel */,
+				D9363B8E282132F900CAC9B9 /* SupportFiles */,
 			);
 			path = CurrencyApp;
 			sourceTree = "<group>";
@@ -464,7 +453,6 @@
 			children = (
 				56EF3389264EF53D00F865F3 /* Cells */,
 				56EF3398264F25EB00F865F3 /* Custom */,
-				56A415F826615A5D005812FA /* Screens */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -515,6 +503,18 @@
 				D9363B8C282132B700CAC9B9 /* GoogleService-Info.plist */,
 			);
 			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		D97817C928355671008581F5 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				56EF3335264EE82B00F865F3 /* LaunchScreen.storyboard */,
+				56A7665D265002B2006ADB42 /* CoinDetailScreen */,
+				56EF3386264EED1B00F865F3 /* MainScreen */,
+				56A415F926615A70005812FA /* SearchScreen */,
+				56A98F1126626900007D0F4E /* SettingsScreen */,
+			);
+			path = Flow;
 			sourceTree = "<group>";
 		};
 		D9DCC9AD281B0C86003E2E6C /* Core */ = {
@@ -592,9 +592,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		56EF3326264EE82B00F865F3 /* CurrencyApp */ = {
+		56EF3326264EE82B00F865F3 /* CryptoApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56EF3351264EE82B00F865F3 /* Build configuration list for PBXNativeTarget "CurrencyApp" */;
+			buildConfigurationList = 56EF3351264EE82B00F865F3 /* Build configuration list for PBXNativeTarget "CryptoApp" */;
 			buildPhases = (
 				56EF3323264EE82B00F865F3 /* Sources */,
 				56EF3324264EE82B00F865F3 /* Frameworks */,
@@ -607,7 +607,7 @@
 				D9DCC9BB281B0CF1003E2E6C /* PBXTargetDependency */,
 				D9DCC9CC281B0D7D003E2E6C /* PBXTargetDependency */,
 			);
-			name = CurrencyApp;
+			name = CryptoApp;
 			packageProductDependencies = (
 				56EF3383264EEBF200F865F3 /* Alamofire */,
 				56EF3392264EFF2D00F865F3 /* Kingfisher */,
@@ -620,12 +620,12 @@
 				D9363B8A282131E500CAC9B9 /* FirebaseMessaging */,
 			);
 			productName = CurrencyApp;
-			productReference = 56EF3327264EE82B00F865F3 /* CurrencyApp.app */;
+			productReference = 56EF3327264EE82B00F865F3 /* CryptoApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		56EF333C264EE82B00F865F3 /* CurrencyAppTests */ = {
+		56EF333C264EE82B00F865F3 /* CryptoAppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56EF3354264EE82B00F865F3 /* Build configuration list for PBXNativeTarget "CurrencyAppTests" */;
+			buildConfigurationList = 56EF3354264EE82B00F865F3 /* Build configuration list for PBXNativeTarget "CryptoAppTests" */;
 			buildPhases = (
 				56EF3339264EE82B00F865F3 /* Sources */,
 				56EF333A264EE82B00F865F3 /* Frameworks */,
@@ -636,14 +636,14 @@
 			dependencies = (
 				56EF333F264EE82B00F865F3 /* PBXTargetDependency */,
 			);
-			name = CurrencyAppTests;
+			name = CryptoAppTests;
 			productName = CurrencyAppTests;
-			productReference = 56EF333D264EE82B00F865F3 /* CurrencyAppTests.xctest */;
+			productReference = 56EF333D264EE82B00F865F3 /* CryptoAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		56EF3347264EE82B00F865F3 /* CurrencyAppUITests */ = {
+		56EF3347264EE82B00F865F3 /* CryptoAppUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56EF3357264EE82B00F865F3 /* Build configuration list for PBXNativeTarget "CurrencyAppUITests" */;
+			buildConfigurationList = 56EF3357264EE82B00F865F3 /* Build configuration list for PBXNativeTarget "CryptoAppUITests" */;
 			buildPhases = (
 				56EF3344264EE82B00F865F3 /* Sources */,
 				56EF3345264EE82B00F865F3 /* Frameworks */,
@@ -654,9 +654,9 @@
 			dependencies = (
 				56EF334A264EE82B00F865F3 /* PBXTargetDependency */,
 			);
-			name = CurrencyAppUITests;
+			name = CryptoAppUITests;
 			productName = CurrencyAppUITests;
-			productReference = 56EF3348264EE82B00F865F3 /* CurrencyAppUITests.xctest */;
+			productReference = 56EF3348264EE82B00F865F3 /* CryptoAppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		D9DCC9B5281B0CF1003E2E6C /* Networking */ = {
@@ -727,7 +727,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 56EF3322264EE82B00F865F3 /* Build configuration list for PBXProject "CurrencyApp" */;
+			buildConfigurationList = 56EF3322264EE82B00F865F3 /* Build configuration list for PBXProject "CryptoApp" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -748,9 +748,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				56EF3326264EE82B00F865F3 /* CurrencyApp */,
-				56EF333C264EE82B00F865F3 /* CurrencyAppTests */,
-				56EF3347264EE82B00F865F3 /* CurrencyAppUITests */,
+				56EF3326264EE82B00F865F3 /* CryptoApp */,
+				56EF333C264EE82B00F865F3 /* CryptoAppTests */,
+				56EF3347264EE82B00F865F3 /* CryptoAppUITests */,
 				D9DCC9B5281B0CF1003E2E6C /* Networking */,
 				D9DCC9C6281B0D7D003E2E6C /* Resources */,
 			);
@@ -913,12 +913,12 @@
 /* Begin PBXTargetDependency section */
 		56EF333F264EE82B00F865F3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 56EF3326264EE82B00F865F3 /* CurrencyApp */;
+			target = 56EF3326264EE82B00F865F3 /* CryptoApp */;
 			targetProxy = 56EF333E264EE82B00F865F3 /* PBXContainerItemProxy */;
 		};
 		56EF334A264EE82B00F865F3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 56EF3326264EE82B00F865F3 /* CurrencyApp */;
+			target = 56EF3326264EE82B00F865F3 /* CryptoApp */;
 			targetProxy = 56EF3349264EE82B00F865F3 /* PBXContainerItemProxy */;
 		};
 		D9DCC9BB281B0CF1003E2E6C /* PBXTargetDependency */ = {
@@ -1129,7 +1129,7 @@
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CurrencyApp.app/CurrencyApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CryptoApp.app/CryptoApp";
 			};
 			name = Debug;
 		};
@@ -1153,7 +1153,7 @@
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CurrencyApp.app/CurrencyApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CryptoApp.app/CryptoApp";
 			};
 			name = Release;
 		};
@@ -1344,7 +1344,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		56EF3322264EE82B00F865F3 /* Build configuration list for PBXProject "CurrencyApp" */ = {
+		56EF3322264EE82B00F865F3 /* Build configuration list for PBXProject "CryptoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56EF334F264EE82B00F865F3 /* Debug */,
@@ -1353,7 +1353,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56EF3351264EE82B00F865F3 /* Build configuration list for PBXNativeTarget "CurrencyApp" */ = {
+		56EF3351264EE82B00F865F3 /* Build configuration list for PBXNativeTarget "CryptoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56EF3352264EE82B00F865F3 /* Debug */,
@@ -1362,7 +1362,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56EF3354264EE82B00F865F3 /* Build configuration list for PBXNativeTarget "CurrencyAppTests" */ = {
+		56EF3354264EE82B00F865F3 /* Build configuration list for PBXNativeTarget "CryptoAppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56EF3355264EE82B00F865F3 /* Debug */,
@@ -1371,7 +1371,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56EF3357264EE82B00F865F3 /* Build configuration list for PBXNativeTarget "CurrencyAppUITests" */ = {
+		56EF3357264EE82B00F865F3 /* Build configuration list for PBXNativeTarget "CryptoAppUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56EF3358264EE82B00F865F3 /* Debug */,
