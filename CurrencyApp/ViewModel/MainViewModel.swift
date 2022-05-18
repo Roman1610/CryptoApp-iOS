@@ -2,10 +2,10 @@ import Foundation
 import Combine
 import Networking
 
-class MainViewModel: ObservableObject {
+final class MainViewModel: ObservableObject {
     
-    @Published private(set) var coins = [Coin]()
     @Published private(set) var coinMarkets = [CoinMarket]()
+    @Published private(set) var error: CryptoError?
     
     @Published private(set) var isInitialLoading = false
     @Published private(set) var isLoadingPage = false
@@ -14,21 +14,21 @@ class MainViewModel: ObservableObject {
     
     private var currentLoadedPages = 0
     private let repository: MainRepositoryProtocol
-    private var cancellables = [AnyCancellable]()
+    private var cancellable = Set<AnyCancellable>()
     
     deinit {
-        cancellables.forEach { $0.cancel() }
+        cancellable.forEach { $0.cancel() }
     }
     
     required init(fetcher: DataFetcherProtocol) {
-        self.repository = MainRepository(fetcher: fetcher)
+        repository = MainRepository(fetcher: fetcher)
         currentCurrency = UserDefaults.currency
         UserDefaults.$currency.sink {
             [weak self] newValue in
             
             self?.currentCurrency = newValue
             self?.refreshCoinMarkets()
-        }.store(in: &cancellables)
+        }.store(in: &cancellable)
     }
     
     func loadData() {
@@ -42,6 +42,7 @@ class MainViewModel: ObservableObject {
     }
     
     func loadMore() {
+        currentLoadedPages += 1
         loadCoinMarkets()
     }
     
@@ -56,16 +57,24 @@ class MainViewModel: ObservableObject {
             isLoadingPage = true
         }
         
-        repository.fetchCoinMarkets(page: currentLoadedPages + 1,
-                                    currency: currentCurrency) {
-            [weak self] coinMarketsData in
-            
-            DispatchQueue.main.async {
-                self?.coinMarkets += coinMarketsData
+        repository.fetchCoinMarkets(page: currentLoadedPages + 1, currency: currentCurrency)
+            .receive(on: DispatchQueue.main)
+            .sink {
+                [weak self] in
+                
+                if case let .failure(error) = $0 {
+                    print("Error: loadCoinMarkets - \(error.localizedDescription)")
+                    self?.error = error
+                }
+                self?.isLoadingPage = false
+                self?.isInitialLoading = false
+            } receiveValue: {
+                [weak self] in
+                
+                self?.coinMarkets += $0
+                self?.isLoadingPage = false
+                self?.isInitialLoading = false
             }
-            self?.currentLoadedPages += 1
-            self?.isLoadingPage = false
-            self?.isInitialLoading = false
-        }
+            .store(in: &cancellable)
     }
 }

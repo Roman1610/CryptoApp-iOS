@@ -42,7 +42,6 @@
 		56EF337F264EEAFE00F865F3 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF336F264EEAFE00F865F3 /* Coin.swift */; };
 		56EF3380264EEAFE00F865F3 /* CoinMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF3370264EEAFE00F865F3 /* CoinMarket.swift */; };
 		56EF3381264EEAFE00F865F3 /* CoinRoi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF3371264EEAFE00F865F3 /* CoinRoi.swift */; };
-		56EF3384264EEBF200F865F3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 56EF3383264EEBF200F865F3 /* Alamofire */; };
 		56EF338C264EF55800F865F3 /* CoinViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF338A264EF55800F865F3 /* CoinViewCell.swift */; };
 		56EF338D264EF55800F865F3 /* CoinViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56EF338B264EF55800F865F3 /* CoinViewCell.xib */; };
 		56EF3390264EF6DC00F865F3 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF338F264EF6DC00F865F3 /* UITableViewCell.swift */; };
@@ -52,6 +51,10 @@
 		56EF339F264F33E900F865F3 /* CurrencyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF339D264F33E900F865F3 /* CurrencyViewCell.swift */; };
 		56EF33A0264F33E900F865F3 /* CurrencyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56EF339E264F33E900F865F3 /* CurrencyViewCell.xib */; };
 		56EF33A2264F372E00F865F3 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF33A1264F372E00F865F3 /* UIView.swift */; };
+		D917A8152835716900A2FF9E /* Swissors in Frameworks */ = {isa = PBXBuildFile; productRef = D917A8142835716900A2FF9E /* Swissors */; };
+		D917A8172835726C00A2FF9E /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D917A8162835726C00A2FF9E /* ErrorView.swift */; };
+		D917A81A2835729E00A2FF9E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D917A8192835729E00A2FF9E /* SnapKit */; };
+		D917A81C28357C5100A2FF9E /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = D917A81B28357C5100A2FF9E /* Route.swift */; };
 		D9363B85282131E500CAC9B9 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D9363B84282131E500CAC9B9 /* FirebaseAnalytics */; };
 		D9363B87282131E500CAC9B9 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D9363B86282131E500CAC9B9 /* FirebaseCrashlytics */; };
 		D9363B89282131E500CAC9B9 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = D9363B88282131E500CAC9B9 /* FirebaseDynamicLinks */; };
@@ -74,7 +77,6 @@
 		D9DCC9D9281B0DB5003E2E6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56EF3333264EE82B00F865F3 /* Assets.xcassets */; };
 		D9DCC9DA281B0DBD003E2E6C /* AppThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560B239B2662A36D0056F616 /* AppThemeColor.swift */; };
 		D9DCC9DD281B0EF9003E2E6C /* RswiftDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = D9DCC9DC281B0EF9003E2E6C /* RswiftDynamic */; };
-		D9DCC9E1281B0FDE003E2E6C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D9DCC9E0281B0FDE003E2E6C /* Alamofire */; };
 		D9DCC9E4281B15DA003E2E6C /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560B23982662A3240056F616 /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
@@ -182,6 +184,8 @@
 		56EF339D264F33E900F865F3 /* CurrencyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewCell.swift; sourceTree = "<group>"; };
 		56EF339E264F33E900F865F3 /* CurrencyViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyViewCell.xib; sourceTree = "<group>"; };
 		56EF33A1264F372E00F865F3 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		D917A8162835726C00A2FF9E /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		D917A81B28357C5100A2FF9E /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		D9363B8C282132B700CAC9B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D9DCC9AF281B0CA2003E2E6C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D9DCC9B6281B0CF1003E2E6C /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,10 +206,11 @@
 				D9363B85282131E500CAC9B9 /* FirebaseAnalytics in Frameworks */,
 				D9DCC9CD281B0D7D003E2E6C /* Resources.framework in Frameworks */,
 				56A7665C265001FB006ADB42 /* Charts in Frameworks */,
-				56EF3384264EEBF200F865F3 /* Alamofire in Frameworks */,
 				D9363B87282131E500CAC9B9 /* FirebaseCrashlytics in Frameworks */,
 				D9DCC9BC281B0CF1003E2E6C /* Networking.framework in Frameworks */,
 				D9DCC9DD281B0EF9003E2E6C /* RswiftDynamic in Frameworks */,
+				D917A8152835716900A2FF9E /* Swissors in Frameworks */,
+				D917A81A2835729E00A2FF9E /* SnapKit in Frameworks */,
 				D9363B8B282131E500CAC9B9 /* FirebaseMessaging in Frameworks */,
 				D9363B89282131E500CAC9B9 /* FirebaseDynamicLinks in Frameworks */,
 			);
@@ -229,7 +234,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9DCC9E1281B0FDE003E2E6C /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,7 +315,7 @@
 				56EF3329264EE82B00F865F3 /* CurrencyApp */,
 				56EF3340264EE82B00F865F3 /* CurrencyAppTests */,
 				56EF334B264EE82B00F865F3 /* CurrencyAppUITests */,
-				D9DCC9B7281B0CF1003E2E6C /* Network */,
+				D9DCC9B7281B0CF1003E2E6C /* Networking */,
 				D9DCC9C8281B0D7D003E2E6C /* Resources */,
 				56EF3328264EE82B00F865F3 /* Products */,
 				D9DCC9DF281B0FDE003E2E6C /* Frameworks */,
@@ -405,6 +409,7 @@
 				56EF3363264EEAFE00F865F3 /* Enum */,
 				56EF3366264EEAFE00F865F3 /* Model */,
 				56EF336A264EEAFE00F865F3 /* DataFetcher.swift */,
+				D917A81B28357C5100A2FF9E /* Route.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -453,6 +458,7 @@
 			children = (
 				56EF3389264EF53D00F865F3 /* Cells */,
 				56EF3398264F25EB00F865F3 /* Custom */,
+				D917A8162835726C00A2FF9E /* ErrorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -534,13 +540,13 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
-		D9DCC9B7281B0CF1003E2E6C /* Network */ = {
+		D9DCC9B7281B0CF1003E2E6C /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				56EF3362264EEAFE00F865F3 /* Network */,
 				D9DCC9B8281B0CF1003E2E6C /* Network.h */,
 			);
-			path = Network;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		D9DCC9C8281B0D7D003E2E6C /* Resources */ = {
@@ -609,7 +615,6 @@
 			);
 			name = CryptoApp;
 			packageProductDependencies = (
-				56EF3383264EEBF200F865F3 /* Alamofire */,
 				56EF3392264EFF2D00F865F3 /* Kingfisher */,
 				56A7665B265001FB006ADB42 /* Charts */,
 				565A26D1266E5EAA00C35A88 /* SwiftUICharts */,
@@ -618,6 +623,8 @@
 				D9363B86282131E500CAC9B9 /* FirebaseCrashlytics */,
 				D9363B88282131E500CAC9B9 /* FirebaseDynamicLinks */,
 				D9363B8A282131E500CAC9B9 /* FirebaseMessaging */,
+				D917A8142835716900A2FF9E /* Swissors */,
+				D917A8192835729E00A2FF9E /* SnapKit */,
 			);
 			productName = CurrencyApp;
 			productReference = 56EF3327264EE82B00F865F3 /* CryptoApp.app */;
@@ -674,7 +681,6 @@
 			);
 			name = Networking;
 			packageProductDependencies = (
-				D9DCC9E0281B0FDE003E2E6C /* Alamofire */,
 			);
 			productName = Network;
 			productReference = D9DCC9B6281B0CF1003E2E6C /* Networking.framework */;
@@ -706,7 +712,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					56EF3326264EE82B00F865F3 = {
 						CreatedOnToolsVersion = 12.5;
@@ -737,12 +743,13 @@
 			);
 			mainGroup = 56EF331E264EE82B00F865F3;
 			packageReferences = (
-				56EF3382264EEBF200F865F3 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				56EF3391264EFF2D00F865F3 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				56A7665A265001FB006ADB42 /* XCRemoteSwiftPackageReference "Charts" */,
 				565A26D0266E5EAA00C35A88 /* XCRemoteSwiftPackageReference "ChartView" */,
 				D9DCC9DB281B0EF9003E2E6C /* XCRemoteSwiftPackageReference "R.swift" */,
 				D9363B83282131E500CAC9B9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				D917A8132835716900A2FF9E /* XCRemoteSwiftPackageReference "ios-Swissors" */,
+				D917A8182835729E00A2FF9E /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 56EF3328264EE82B00F865F3 /* Products */;
 			projectDirPath = "";
@@ -845,6 +852,7 @@
 				56A415FC26615A9F005812FA /* SearchViewController.swift in Sources */,
 				560B239526629A460056F616 /* SettingsRepository.swift in Sources */,
 				56EF3376264EEAFE00F865F3 /* CoinDetailRepository.swift in Sources */,
+				D917A8172835726C00A2FF9E /* ErrorView.swift in Sources */,
 				56EF332F264EE82B00F865F3 /* MainViewController.swift in Sources */,
 				56EF332B264EE82B00F865F3 /* AppDelegate.swift in Sources */,
 				560B23932662974D0056F616 /* UserDefaults.swift in Sources */,
@@ -895,6 +903,7 @@
 				D9DCC9D2281B0DA3003E2E6C /* GeckoSortResultEnum.swift in Sources */,
 				D9DCC9D7281B0DAD003E2E6C /* DataFetcher.swift in Sources */,
 				D9DCC9D5281B0DA8003E2E6C /* ResponseCoinMarketChart.swift in Sources */,
+				D917A81C28357C5100A2FF9E /* Route.swift in Sources */,
 				D9DCC9D3281B0DA3003E2E6C /* TimePeriod.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1205,7 +1214,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1228,6 +1237,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1240,7 +1250,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1263,6 +1273,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1275,7 +1286,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1310,7 +1321,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1417,20 +1428,28 @@
 				minimumVersion = 4.0.1;
 			};
 		};
-		56EF3382264EEBF200F865F3 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.4.3;
-			};
-		};
 		56EF3391264EFF2D00F865F3 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 6.3.0;
+			};
+		};
+		D917A8132835716900A2FF9E /* XCRemoteSwiftPackageReference "ios-Swissors" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elegion/ios-Swissors";
+			requirement = {
+				kind = exactVersion;
+				version = 2.4.0;
+			};
+		};
+		D917A8182835729E00A2FF9E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = exactVersion;
+				version = 5.6.0;
 			};
 		};
 		D9363B83282131E500CAC9B9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -1462,15 +1481,20 @@
 			package = 56A7665A265001FB006ADB42 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
 		};
-		56EF3383264EEBF200F865F3 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 56EF3382264EEBF200F865F3 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
 		56EF3392264EFF2D00F865F3 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 56EF3391264EFF2D00F865F3 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		D917A8142835716900A2FF9E /* Swissors */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D917A8132835716900A2FF9E /* XCRemoteSwiftPackageReference "ios-Swissors" */;
+			productName = Swissors;
+		};
+		D917A8192835729E00A2FF9E /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D917A8182835729E00A2FF9E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 		D9363B84282131E500CAC9B9 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1496,11 +1520,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D9DCC9DB281B0EF9003E2E6C /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = RswiftDynamic;
-		};
-		D9DCC9E0281B0FDE003E2E6C /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 56EF3382264EEBF200F865F3 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

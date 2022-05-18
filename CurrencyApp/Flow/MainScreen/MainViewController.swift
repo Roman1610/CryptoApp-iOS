@@ -1,5 +1,6 @@
 import UIKit
 import Combine
+import SnapKit
 
 class MainViewController: UIViewController, UINibInitProtocol {
     
@@ -31,6 +32,8 @@ class MainViewController: UIViewController, UINibInitProtocol {
         return indicator
     }()
     
+    private let errorView = ErrorView()
+    
     // MARK: - Properties
     
     weak var coordinator: MainCoordinatorProtocol?
@@ -51,6 +54,12 @@ class MainViewController: UIViewController, UINibInitProtocol {
         super.viewDidLoad()
         
         configTableView()
+        
+        view.addSubview(errorView)
+        errorView.snp.makeConstraints {
+            $0.center.equalTo(tableView)
+            $0.leading.trailing.equalTo(tableView)
+        }
     }
     
     // MARK: - IBActions
@@ -82,7 +91,7 @@ class MainViewController: UIViewController, UINibInitProtocol {
     }
     
     private func initViewModel() {
-        let loadingPageCancellable = mainViewModel.$isLoadingPage.sink {
+        mainViewModel.$isLoadingPage.sink {
             [weak self] isLoading in
             
             if isLoading {
@@ -92,35 +101,45 @@ class MainViewController: UIViewController, UINibInitProtocol {
                 self?.loadingIndicator.stopAnimating()
                 self?.tableView?.tableFooterView = nil
             }
-        }
+        }.store(in: &viewModelCancellables)
         
-        let loadingInitCancellable = mainViewModel.$isInitialLoading.sink {
+        mainViewModel.$isInitialLoading.sink {
             [weak self] isLoading in
+            
             if isLoading {
                 self?.refreshControl.beginRefreshing()
             } else {
                 self?.refreshControl.endRefreshing()
             }
-        }
+        }.store(in: &viewModelCancellables)
         
-        let coinsMarketCancellable = mainViewModel.$coinMarkets.sink {
+        mainViewModel.$coinMarkets.sink {
             [weak self] coins in
+            
             self?.coinsMarket = coins
             self?.tableView?.reloadData()
-        }
+        }.store(in: &viewModelCancellables)
         
-        viewModelCancellables.append(loadingPageCancellable)
-        viewModelCancellables.append(loadingInitCancellable)
-        viewModelCancellables.append(coinsMarketCancellable)
+        mainViewModel.$error.sink {
+            [weak self] error in
+            
+            guard let error = error else {
+                self?.errorView.isHidden = true
+                return
+            }
+            
+            self?.errorView.isHidden = false
+            self?.errorView.set(error: error)
+        }.store(in: &viewModelCancellables)
         
         refreshControl.beginRefreshing()
         mainViewModel.loadData()
     }
     
     @objc private func refreshCoins(_ sender: Any) {
+        errorView.isHidden = true
         mainViewModel.loadData()
     }
-    
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {

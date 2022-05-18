@@ -1,5 +1,6 @@
 import Foundation
 import Networking
+import Combine
 
 class CoinDetailViewModel: ObservableObject {
     
@@ -18,12 +19,13 @@ class CoinDetailViewModel: ObservableObject {
     
     private let repository: CoinDetailRepositoryProtocol
     
+    private var cancellable = Set<AnyCancellable>()
+    
     deinit {
-        debugPrint("CoinDetailViewModel deinit")
+        cancellable.forEach { $0.cancel() }
     }
     
     init(fetcher: DataFetcherProtocol, coinId: String, coinName: String) {
-        debugPrint("CoinDetailViewModel init")
         self.repository = CoinDetailRepository(fetcher: fetcher)
         self.coinId = coinId
         self.coinName = coinName
@@ -38,27 +40,33 @@ class CoinDetailViewModel: ObservableObject {
         repository.fetchCoinChartRange(id: coinId,
                                        currency: currency,
                                        from: beforeTimestamp / 1000,
-                                       to: currentTimestamp / 1000) {
-            data in
-            
-            DispatchQueue.global(qos: .background).async {
+                                       to: currentTimestamp / 1000)
+            .receive(on: DispatchQueue.main)
+            .sink {
+                [weak self] in
+                
+                if case let .failure(error) = $0 {
+                    print("Error: fetchCoinChartRange -  \(error.localizedDescription)")
+                }
+                self?.isLoading = false
+            } receiveValue: {
+                [weak self] receivedValue in
+                
                 var min = Double.greatestFiniteMagnitude
-                for item in data {
+                for item in receivedValue {
                     if item.price < min {
                         min = item.price
                     }
                 }
                 
                 var prices = [Double]()
-                for item in data {
+                for item in receivedValue {
                     prices.append(item.price)
                 }
                 
-                DispatchQueue.main.async {
-                    self.prices = prices
-                    self.isLoading = false
-                }
+                self?.prices = prices
+                self?.isLoading = false
             }
-        }
+            .store(in: &cancellable)
     }
 }

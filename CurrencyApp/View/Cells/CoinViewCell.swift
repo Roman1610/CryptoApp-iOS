@@ -14,6 +14,7 @@ class CoinViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
+        coinImage.kf.cancelDownloadTask()
         coinImage.image = nil
     }
     
@@ -29,7 +30,7 @@ class CoinViewCell: UITableViewCell {
         percentLabel.textColor = percent < 0 ? UIColor.systemRed : UIColor.systemGreen
         
         if let imageUrl = URL(string: coin.image) {
-            KF.url(imageUrl).set(to: coinImage)
+            coinImage.kf.setImage(with: imageUrl)
         }
     }
 }

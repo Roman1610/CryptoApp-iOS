@@ -1,5 +1,6 @@
 import Foundation
 import Networking
+import Combine
 
 class SettingsViewModel: ObservableObject {
     
@@ -8,19 +9,33 @@ class SettingsViewModel: ObservableObject {
     
     private let repository: SettingsRepository
     
+    private var cancellable = Set<AnyCancellable>()
+    
+    deinit {
+        cancellable.forEach { $0.cancel() }
+    }
+    
     init(fetcher: DataFetcher) {
         repository = SettingsRepository(fetcher: fetcher)
     }
     
     private func loadSupportedCurrencies() {
         isLoading = true
-        repository.fetchSupportedCurrencies {
-            [weak self] currencies in
-            
-            DispatchQueue.main.async {
-                self?.currencies = currencies
+        repository.fetchSupportedCurrencies()
+            .receive(on: DispatchQueue.main)
+            .sink {
+                [weak self] in
+                
+                if case let .failure(error) = $0 {
+                    print("Error: loadSupportedCurrencies - \(error.localizedDescription)")
+                }
+                self?.isLoading = false
+            } receiveValue: {
+                [weak self] in
+                
+                self?.currencies = $0
+                self?.isLoading = false
             }
-            self?.isLoading = false
-        }
+            .store(in: &cancellable)
     }
 }

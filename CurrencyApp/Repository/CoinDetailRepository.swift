@@ -1,5 +1,5 @@
-import Foundation
 import Networking
+import Combine
 
 protocol CoinDetailRepositoryProtocol {
     
@@ -7,13 +7,11 @@ protocol CoinDetailRepositoryProtocol {
     
     func fetchCoinChart(id: String,
                         currency: String,
-                        days: Int,
-                        result: @escaping ([ResponseCoinMarketChartNode]) -> ())
+                        days: Int) -> AnyPublisher<[ResponseCoinMarketChartNode], CryptoError>
     func fetchCoinChartRange(id: String,
                              currency: String,
                              from: Int,
-                             to: Int,
-                             result: @escaping ([ResponseCoinMarketChartNode]) -> ())
+                             to: Int) -> AnyPublisher<[ResponseCoinMarketChartNode], CryptoError>
 }
 
 class CoinDetailRepository: CoinDetailRepositoryProtocol {
@@ -26,21 +24,19 @@ class CoinDetailRepository: CoinDetailRepositoryProtocol {
     
     func fetchCoinChart(id: String,
                         currency: String,
-                        days: Int,
-                        result: @escaping ([ResponseCoinMarketChartNode]) -> ()) {
-        fetcher.fetchCoinMarketChart(id: id, currency: currency, days: days) { responseData in
-            result(responseData.prices)
-        }
+                        days: Int) -> AnyPublisher<[ResponseCoinMarketChartNode], CryptoError> {
+        fetcher.fetchCoinMarketChart(id: id, currency: currency, days: days)
+            .map { $0.prices }
+            .eraseToAnyPublisher()
     }
     
     func fetchCoinChartRange(id: String,
                              currency: String,
                              from: Int,
-                             to: Int,
-                             result: @escaping ([ResponseCoinMarketChartNode]) -> ()) {
-        fetcher.fetchCoinMarketChartRange(id: id, currency: currency, from: from, to: to) { responseData in
-            result(responseData.prices)
-        }
+                             to: Int) -> AnyPublisher<[ResponseCoinMarketChartNode], CryptoError> {
+        fetcher.fetchCoinMarketChartRange(id: id, currency: currency, from: from, to: to)
+            .map { $0.prices }
+            .eraseToAnyPublisher()
     }
     
 }

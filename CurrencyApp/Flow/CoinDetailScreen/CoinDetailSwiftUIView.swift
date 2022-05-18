@@ -19,12 +19,9 @@ struct CoinDetailSwiftUIView: View {
         dropShadowColor: .gray
     )
     
-    init(
-        coin coinMarket: CoinMarket,
-        viewModel: CoinDetailViewModel,
-        coordinator: MainCoordinatorProtocol?
-    ) {
-        debugPrint("CoinDetailView init")
+    init(coin coinMarket: CoinMarket,
+         viewModel: CoinDetailViewModel,
+         coordinator: MainCoordinatorProtocol?) {
         coin = coinMarket
         coinViewModel = viewModel
         self.coordinator = coordinator

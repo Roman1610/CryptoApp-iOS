@@ -1,10 +1,10 @@
-import Foundation
 import Networking
+import Combine
 
 protocol SettingsRepositoryProtocol {
     init(fetcher: DataFetcherProtocol)
     
-    func fetchSupportedCurrencies(result: @escaping ([Currency]) -> ())
+    func fetchSupportedCurrencies() -> AnyPublisher<[Currency], CryptoError>
 }
 
 class SettingsRepository: SettingsRepositoryProtocol {
@@ -15,9 +15,9 @@ class SettingsRepository: SettingsRepositoryProtocol {
         self.fetcher = fetcher
     }
     
-    func fetchSupportedCurrencies(result: @escaping ([Currency]) -> ()) {
-        fetcher.fetchSupportedCurrencies { currenciesData in
-            result(currenciesData.map(Currency.init))
-        }
+    func fetchSupportedCurrencies() -> AnyPublisher<[Currency], CryptoError> {
+        fetcher.fetchSupportedCurrencies()
+            .map { $0.map(Currency.init) }
+            .eraseToAnyPublisher()
     }
 }

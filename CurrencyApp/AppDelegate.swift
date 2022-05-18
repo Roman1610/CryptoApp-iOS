@@ -1,6 +1,7 @@
 import UIKit
 import Messages
 import Firebase
+import Kingfisher
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         configFirebase()
+        configKF()
         
         window = UIWindow()
         window?.rootViewController = rootViewController
@@ -39,5 +41,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return
         }
         FirebaseApp.configure(options: options)
+    }
+    
+    private func configKF() {
+        ImageCache.default.memoryStorage.config.totalCostLimit = 1024 * 1024 * 10 // 10 MB
+        ImageCache.default.diskStorage.config.sizeLimit = 1024 * 1024 * 10 // 10 MB
     }
 }

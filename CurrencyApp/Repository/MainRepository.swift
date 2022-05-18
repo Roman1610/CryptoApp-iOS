@@ -1,16 +1,21 @@
 import Foundation
 import Networking
+import Combine
 
 protocol MainRepositoryProtocol {
     init(fetcher: DataFetcherProtocol)
     
-    func fetchAllData(result: @escaping ([Coin]) -> ())
-    func fetchCoinMarkets(page: Int, currency: String, order: GeckoSortResultEnum?, perPage: Int, result: @escaping ([CoinMarket]) -> ())
+    func fetchAllData() -> AnyPublisher<[Coin], CryptoError>
+    func fetchCoinMarkets(page: Int,
+                          currency: String,
+                          order: GeckoSortResultEnum?,
+                          perPage: Int) -> AnyPublisher<[CoinMarket], CryptoError>
 }
 
 extension MainRepositoryProtocol {
-    func fetchCoinMarkets(page: Int, currency: String, result: @escaping ([CoinMarket]) -> ()) {
-        fetchCoinMarkets(page: page, currency: currency, order: nil, perPage: 50, result: result)
+    
+    func fetchCoinMarkets(page: Int, currency: String) -> AnyPublisher<[CoinMarket], CryptoError> {
+        fetchCoinMarkets(page: page, currency: currency, order: nil, perPage: 50)
     }
 }
 
@@ -22,21 +27,20 @@ class MainRepository: MainRepositoryProtocol {
         self.fetcher = fetcher
     }
     
-    func fetchAllData(result: @escaping ([Coin]) -> ()) {
-        fetcher.fetchAllCoins { coinsData in
-            result(coinsData.map(Coin.init))
-        }
+    func fetchAllData() -> AnyPublisher<[Coin], CryptoError> {
+        fetcher.fetchAllCoins()
+            .map { $0.map(Coin.init) }
+            .eraseToAnyPublisher()
     }
     
-    func fetchCoinMarkets(
-        page: Int,
-        currency: String,
-        order: GeckoSortResultEnum? = nil,
-        perPage: Int,
-        result: @escaping ([CoinMarket]) -> ()
-    ) {
-        fetcher.fetchCoinMarkets(page: page, currency: currency, order: order, perPage: perPage) { responseCoinMarkets in
-            result(responseCoinMarkets.map(CoinMarket.init))
-        }
+    func fetchCoinMarkets(page: Int,
+                          currency: String,
+                          order: GeckoSortResultEnum? = nil,
+                          perPage: Int = 50) -> AnyPublisher<[CoinMarket], CryptoError> {
+        fetcher.fetchCoinMarkets(page: page, currency: currency, order: order, perPage: perPage)
+            .map {
+                $0.map(CoinMarket.init)
+            }
+            .eraseToAnyPublisher()
     }
 }
